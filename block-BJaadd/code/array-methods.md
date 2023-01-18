@@ -32,8 +32,67 @@ Example:
      ```
    - `concat` accepts n number of values and returns one array with all the values in same order. It does not change the original array.
    - No it does not mutate the original array
-
+ 
 2. `join`
+   - Parameter : -seperator specifies a string to separate
+     each pair of adjacent elements of array.
+     Each elements are seperated with (",").
+     if the seperator is an empty string all characters are joined without any characters in between them.  
+    
+   - Return : a string with all elements joined.
+    if arr.length is 0 empty string is returned.
+
+    Example :
+    ```js
+    
+     let x = ['a','b', 'c','d','e'];
+     
+     x.join() // 'a,b,c,d,e'
+     x.join(x) // 'aa,b,c,d,eba,b,c,d,eca,b,c,d,eda,b,c,d,ee'
+     x.join('') // 'abcde'
+     x.join(" , ") // 'a , b , c , d , e'
+     
+     x.join(" - ") // 'a - b - c - d - e'
+     x.join(" A1 ") 
+     // 'a A1 b A1 c A1 d A1 e'      
+     x.join(" A1") // 'a A1b A1c A1d A1e'
+     x.join("A1 ") // 'aA1 bA1 cA1 dA1 e'
+
+      function joinArray(arra, separator=',')
+    {
+    let result = ''
+    if (typeof separator !== 'string') return "Please, enter the separator as a string"
+    for (let i = 0; i < arra.length ; i++) {
+        if(i != arra.length - 1) result += arra[i] + separator
+        else result += arra[i]
+    }
+    return result
+    }
+    
+    joinArray([1,2,4,6,7,78,8,9,95,22],"-")
+    // '1-2-4-6-7-78-8-9-95-22'
+
+    joinArray(["red",'green','blue','black','white'],"-")
+    // 'red-green-blue-black-white'
+
+    function arrToStr(arr, char) {
+    return arr.join(char)
+    }
+    arrToStr(["Red", "Green", "White", "Black"], '+')
+    // 'Red+Green+White+Black'
+
+     arrToStr(["Red", "Green", "White", "Black"], ' ++ ')
+     // 'Red ++ Green ++ White ++ Black'  
+        
+    function result(number,separator = ''){
+      
+      let number = [];
+      
+      
+    }
+
+    ```
+
 3. `flat`
 4. `push`
 5. `indexOf`
