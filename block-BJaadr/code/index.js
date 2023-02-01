@@ -1,35 +1,77 @@
-// NOTE: You can only use the (reduce) array method to solve this exercise:
+// NOTE: You can only use the (reduce) array method to solve this exercise:console.log(got.houses[nameWithS]);
 
 function countAllPeople() {
   // your code goes here
+  return got.houses.reduce((total, house) =>
+   total + house.people.length, 0);
 }
 
 function peopleByHouses() {
   // your code goes here
+
+  return got.houses.reduce((houses, person) => {
+    if (houses[person.house]) {
+      houses[person.house] += 1;
+    } else {
+      houses[person.house] = 1;
+    }
+    return houses;
+  }, {});
 }
 
 function everyone() {
   // your code goes here
+   return got.houses.reduce((acc, house) => {
+     return acc.concat(house.people.map(member => member.name));
+   }, []);
 }
 
 function nameWithS() {
   // your code goes here
+  return got.houses.reduce((names, house) => {
+    return names.concat(house.people.filter(member => 
+      member.name.includes('s') || member.name.includes('S')).map(member => member.name));
+  }, []);
 }
 
 function nameWithA() {
   // your code goes here
+  return got.houses.reduce((names, house) => {
+    return names.concat(house.people.filter(member => 
+      member.name.includes('a') || member.name.includes('A')).map(member => 
+        member.name));
+  }, []);
+
 }
 
 function surnameWithS() {
   // your code goes here
+  return got.houses.reduce((acc, person) => {
+    if (person.name[0] === "S") {
+      acc.push(`${person.name} ${person.surname}`);
+    }
+    return acc;
+  }, []);
+
 }
 
 function surnameWithA() {
   // your code goes here
+  return got.houses.reduce((acc, person) => {
+    if (person.name[0] === "A") {
+      acc.push(`${person.name} ${person.surname}`);
+    }
+    return acc;
+  }, []);
+
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  return got.houses.reduce((acc, curr) => {
+    return acc.concat(curr.people.map(person => person.name));
+  }, []);
+
 }
 
 // Testing your result after writing your function
